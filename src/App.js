@@ -12,7 +12,6 @@ const App = () => {
     const get_DATA = async () => {
         const res = await axios.get(`https://newsapi.org/v2/top-headlines?country=kr&apiKey=${API_KEY}`);
         const resultNews = res.data.articles;
-
         console.log(resultNews);
         setNews(resultNews);
 
@@ -27,6 +26,11 @@ const App = () => {
                                 return (
                                     <ul key={idx}>
                                         <li>{news.title}</li>
+                                        <li>
+                                            <figure>
+                                                <img src={news?.urlToImage} alt={news.title} />
+                                            </figure>
+                                        </li>
                                         <li>{news.description}</li>
                                         <li>{news.publishedAt}</li>
                                     </ul>
